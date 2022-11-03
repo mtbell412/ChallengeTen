@@ -1,10 +1,7 @@
-const inquirer = require("inquirer");
 const fs = require('fs');
-const Manager = require('./lib/Manager');
-const Employee = require('./lib/Employee');
-const Engineer = require('./lib/Engineer');
-const Intern = require('./lib/Engineer');
+const path = require('path');
 
+//need to loop through the generatecardhtml until the user is done creating team members
 
 
 const generateHTML = ({ name, location, github, linkedin }) =>
@@ -26,47 +23,12 @@ const generateHTML = ({ name, location, github, linkedin }) =>
     <li class="list-group-item">My GitHub username is ${github}</li>
     <li class="list-group-item">LinkedIn: ${linkedin}</li>
   </ul>
+  ${employeeArr}
 </div>
 </div>
 </body>
 </html>`;
 
-inquirer.prompt([
-  {
-    type: 'input',
-    name: 'name',
-    message: 'What is your name?',
-  },
-  {
-    type: 'input',
-    name: 'location',
-    message: 'Where are you from?',
-  },
-  {
-    type: 'input',
-    name: 'hobby',
-    message: 'What is your favorite hobby?',
-  },
-  {
-    type: 'input',
-    name: 'food',
-    message: 'What is your favorite food?',
-  },
-  {
-    type: 'input',
-    name: 'github',
-    message: 'Enter your GitHub Username',
-  },
-  {
-    type: 'input',
-    name: 'linkedin',
-    message: 'Enter your LinkedIn URL.',
-  },
-])
-.then((answers) => {
-  const htmlPageContent = generateHTML(answers);
 
-  fs.writeFile('index.html', htmlPageContent, (err) =>
-    err ? console.log(err) : console.log('Successfully created index.html!')
-  );
-});
+
+module.exports = generatehtml;
