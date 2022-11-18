@@ -18,11 +18,11 @@ const generateHTML = (employeeArr) =>{
   </head>
   
   <body>
-      <header class='header'>
-          <h2>My Team</h2>
+      <header class='header text-center p-4 m-2 bg-danger text-light'>
+      <h2>My Team</h2>
       </header>
   
-      <main>
+      <main class="row">
       ${employeeArr.map((employee)=>{
         return generateCard(employee)
 
@@ -40,22 +40,22 @@ const generateCard = (employee) =>{
   const role = employee.getRole();
 
   if(role === 'Manager'){
-    listItem = employee.getOfficeNumber();
+    listItem = 'Office Number: '+employee.getOfficeNumber();
   }else if(role === 'Intern'){
-    listItem = employee.getSchool();
+    listItem = 'School: '+  employee.getSchool();
   }
   else{
-    listItem = employee.getGithub();
+    listItem = 'Github: ' +employee.getGithub();
   }
 
-  return `<div class="card" style="width: 18rem;">
-            <div class="card-header">
-            ${employee.name}
-            ${employee.getRole()}
+  return `<div class="card bg-light m-4 mx-auto display-inline" style="width: 18rem;">
+            <div class="card-header text-light bg-primary">
+            <h4>${employee.name}</h4>
+            <h4>${employee.getRole()}</h4>
             </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">${employee.getId()}</li>
-              <li class="list-group-item">${employee.getEmail()}</li>
+            <ul class="list-group list-group-flush m-3 border">
+              <li class="list-group-item">ID: ${employee.getId()}</li>
+              <li class="list-group-item">Email: ${employee.getEmail()}</li>
               <li class="list-group-item">${listItem}</li>
             </ul>
           </div>`
