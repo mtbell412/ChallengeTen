@@ -4,6 +4,7 @@ const Employee = require('./lib/Employee');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Engineer');
 const generateHTML = require('./Generator');
+const fs = require('fs');
 let employeeArr = []
 
 
@@ -90,4 +91,5 @@ const questions = () => {
 }
 
 questions();
+
 
